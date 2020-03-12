@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBApiProject", "CBApiProject\CBApiProject.csproj", "{7767FFA5-81F4-4F1F-9A1F-9C97DE6B999B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBApiProject", "CBApiProject\CBApiProject.csproj", "{7767FFA5-81F4-4F1F-9A1F-9C97DE6B999B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBApi.Database", "CBApi.Database\CBApi.Database.csproj", "{78FD067A-D233-4AF7-A9DD-0BBD8F2233FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBApi.Database", "CBApi.Database\CBApi.Database.csproj", "{78FD067A-D233-4AF7-A9DD-0BBD8F2233FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBApi.DataAccess", "CBApi.DataAccess\CBApi.DataAccess.csproj", "{0E460415-514D-4A47-91D6-C4BE66C6A59C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBApi.DataAccess", "CBApi.DataAccess\CBApi.DataAccess.csproj", "{0E460415-514D-4A47-91D6-C4BE66C6A59C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBApi.Types", "CBApi.Types\CBApi.Types.csproj", "{32740D88-85BE-45A2-895D-E65211711A49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBApi.Utilities", "CBApi.Utilities\CBApi.Utilities.csproj", "{F2058F1E-A3A7-49BE-8CF1-8828ED95B5DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{0E460415-514D-4A47-91D6-C4BE66C6A59C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E460415-514D-4A47-91D6-C4BE66C6A59C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E460415-514D-4A47-91D6-C4BE66C6A59C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32740D88-85BE-45A2-895D-E65211711A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32740D88-85BE-45A2-895D-E65211711A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32740D88-85BE-45A2-895D-E65211711A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32740D88-85BE-45A2-895D-E65211711A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2058F1E-A3A7-49BE-8CF1-8828ED95B5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2058F1E-A3A7-49BE-8CF1-8828ED95B5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2058F1E-A3A7-49BE-8CF1-8828ED95B5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2058F1E-A3A7-49BE-8CF1-8828ED95B5DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
