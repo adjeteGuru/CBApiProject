@@ -1,8 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+using CBApi.DataAccess.Repository;
+using CBApi.DataAccess.Repository.Contracts;
 using CBApi.Database;
+using CBApi.Types;
+using CBApiProject.Queries;
+using CBApiProject.Schema;
+using GraphiQl;
+using GraphQL;
+using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +17,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using HotChocolate.AspNetCore;
+using HotChocolate.AspNetCore.Voyager;
+using HotChocolate;
 
 namespace CBApiProject
 {
@@ -29,8 +37,28 @@ namespace CBApiProject
         {
             services.AddControllers();
 
+            //this is registered from Repository interface in order to use them
+            //so a new instance will be provided to every controller and every service
+            services.AddTransient<IUserRepository, UserRepository>();
+            //services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddDbContext<CBApiContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionStrings:CBApiDb"]));
+                options.UseSqlServer(Configuration.GetConnectionString("CBApiDb")));
+
+            //to register IDocument as singleton
+            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+
+            services.AddSingleton<UserQuery>();
+            services.AddSingleton<UserType>();
+
+            //var sp = services.BuildServiceProvider();
+            // services.AddSingleton<ISchema>(new CBApiSchema(new FuncDependencyResolver(type =>sp.GetService(type))));
+
+            // this enables you to use DataLoader in your resolvers.
+            services.AddDataLoaderRegistry();
+
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +68,9 @@ namespace CBApiProject
             {
                 app.UseDeveloperExceptionPage();
             }
+
+       
+            //app.UseGraphiQl();
 
             app.UseHttpsRedirection();
 
@@ -51,6 +82,13 @@ namespace CBApiProject
             {
                 endpoints.MapControllers();
             });
+
+            //app
+            //   .UseRouting()
+            //   .UseWebSockets()
+            //   .UseGraphQL("/graphql")
+            //   .UsePlayground("/graphql")
+            //   .UseVoyager("/graphql");
 
             db.EnsureSeedData();
         }
