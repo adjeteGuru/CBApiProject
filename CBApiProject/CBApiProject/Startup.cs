@@ -70,7 +70,7 @@ namespace CBApiProject
             }
 
        
-            //app.UseGraphiQl();
+            app.UseGraphiQl();
 
             app.UseHttpsRedirection();
 
@@ -83,12 +83,12 @@ namespace CBApiProject
                 endpoints.MapControllers();
             });
 
-            //app
-            //   .UseRouting()
-            //   .UseWebSockets()
-            //   .UseGraphQL("/graphql")
-            //   .UsePlayground("/graphql")
-            //   .UseVoyager("/graphql");
+            app
+             
+               .UseWebSockets()
+              // .UseGraphQL("/graphql")
+               //.UsePlayground("/graphql")
+               .UseVoyager("/graphql");
 
             db.EnsureSeedData();
         }
