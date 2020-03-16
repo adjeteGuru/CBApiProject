@@ -19,8 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using HotChocolate.AspNetCore;
 using HotChocolate.AspNetCore.Voyager;
-using HotChocolate;
-using Microsoft.AspNetCore.Http;
+//using HotChocolate;
 
 namespace CBApiProject
 {
@@ -52,16 +51,13 @@ namespace CBApiProject
             services.AddSingleton<UserQuery>();
             services.AddSingleton<UserType>();
 
-            //var sp = services.BuildServiceProvider();
-            //services.AddSingleton<ISchema>(new CBApiSchema(new FuncDependencyResolver(type => sp.GetService(type))));
+            var sp = services.BuildServiceProvider();
+            services.AddSingleton<ISchema>(new CBApiSchema(new FuncDependencyResolver(type => sp.GetService(type))));
 
             // this enables you to use DataLoader in your resolvers.
-            services.AddDataLoaderRegistry();
+            //services.AddDataLoaderRegistry();
 
-            services.AddGraphQL(SchemaBuilder.New()
-
-                    .AddQueryType<UserType>());
-                   // .AddType<CharacterType>());
+           
 
         }
 
@@ -73,31 +69,22 @@ namespace CBApiProject
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Worker Process Name : "
-            //        + System.Diagnostics.Process.GetCurrentProcess().ProcessName);
-            //});
 
-
-            //app.UseGraphiQl();
+            app.UseGraphiQl();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-             app.UseAuthorization();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            app.UseGraphQL("/graphql");
-           
-
             //app
-
+             
             //   .UseWebSockets()
             //  // .UseGraphQL("/graphql")
             //   //.UsePlayground("/graphql")
