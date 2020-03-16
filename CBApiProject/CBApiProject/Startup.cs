@@ -19,7 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using HotChocolate.AspNetCore;
 using HotChocolate.AspNetCore.Voyager;
-using HotChocolate;
+//using HotChocolate;
 
 namespace CBApiProject
 {
@@ -51,11 +51,11 @@ namespace CBApiProject
             services.AddSingleton<UserQuery>();
             services.AddSingleton<UserType>();
 
-            //var sp = services.BuildServiceProvider();
-            // services.AddSingleton<ISchema>(new CBApiSchema(new FuncDependencyResolver(type =>sp.GetService(type))));
+            var sp = services.BuildServiceProvider();
+            services.AddSingleton<ISchema>(new CBApiSchema(new FuncDependencyResolver(type => sp.GetService(type))));
 
             // this enables you to use DataLoader in your resolvers.
-            services.AddDataLoaderRegistry();
+            //services.AddDataLoaderRegistry();
 
            
 
@@ -69,7 +69,7 @@ namespace CBApiProject
                 app.UseDeveloperExceptionPage();
             }
 
-       
+
             app.UseGraphiQl();
 
             app.UseHttpsRedirection();
@@ -83,12 +83,12 @@ namespace CBApiProject
                 endpoints.MapControllers();
             });
 
-            app
+            //app
              
-               .UseWebSockets()
-              // .UseGraphQL("/graphql")
-               //.UsePlayground("/graphql")
-               .UseVoyager("/graphql");
+            //   .UseWebSockets()
+            //  // .UseGraphQL("/graphql")
+            //   //.UsePlayground("/graphql")
+            //   .UseVoyager("/graphql");
 
             db.EnsureSeedData();
         }
