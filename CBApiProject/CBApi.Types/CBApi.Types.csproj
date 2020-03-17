@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GraphiQL" Version="1.2.0" />
+    <PackageReference Include="GraphQL" Version="2.4.0" />
+    <PackageReference Include="HotChocolate" Version="10.3.6" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="10.3.6" />
+    <PackageReference Include="HotChocolate.AspNetCore.HttpGetSchema" Version="10.3.6" />
+    <PackageReference Include="HotChocolate.AspNetCore.Voyager" Version="10.3.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,6 +21,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CBApi.Database\CBApi.Database.csproj" />
   </ItemGroup>
 
 </Project>
